@@ -1,8 +1,20 @@
+let nombre = prompt("Usted ingresó a la Casa de cambio! Ingrese su nombre");
+console.log (nombre)
+for (let i=0; i<2; i++){
+    if (nombre !== ""){
+        console.log("introdujo nombre")
+      break
+        } else {
+          nombre = prompt("Usted ingresó a la Casa de cambio! Ingrese su nombre");
+        }
+    }
+
+
 function convertir() {
-    var valore = parseInt(document.getElementById("valor").value);
-    var resultado = 0;
-    var dolar = 346.5;
-    var euro  = 375.5;
+    let valore = parseInt(document.getElementById("valor").value);
+    let resultado = 0;
+    let dolar = 346.5;
+    let euro  = 375.5;
     if (document.getElementById("uno").checked) {
         resultado = valore/dolar;
         alert ("El cambio de pesos a dolares es: $" + resultado.toFixed(2));
