@@ -13,8 +13,9 @@ for (let i=0; i<2; i++){
 function convertir() {
     let valore = parseInt(document.getElementById("valor").value);
     let resultado = 0;
-    let dolar = 346.5;
-    let euro  = 375.5;
+    let dolar = 379;
+    let euro = 424;
+    const moneda = {nombre:"dolar",valor:"379", nombre:"euro",valor:"424"};
     if (document.getElementById("uno").checked) {
         resultado = valore/dolar;
         alert ("El cambio de pesos a dolares es: $" + resultado.toFixed(2));
