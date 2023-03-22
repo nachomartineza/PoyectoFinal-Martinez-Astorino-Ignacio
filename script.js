@@ -11,8 +11,8 @@ function convertir() {
   let valore = parseInt(document.getElementById("valor").value);
   let resultado = 0;
   const monedas = [
-    { nombre: "dolar", valor: 379 },
-    { nombre: "euro", valor: 424 }
+    { nombre: "dolar", valor: 393 },
+    { nombre: "euro", valor: 441 }
   ];
 
   if (document.getElementById("uno").checked) {
