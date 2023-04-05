@@ -1,4 +1,4 @@
-let nombre = localStorage.getItem("nombreUsuario");
+var nombre = localStorage.getItem("nombreUsuario");
 
 if (!nombre) {
   nombre = prompt("Usted ingresó a la Casa de cambio! Ingrese su nombre");
@@ -10,10 +10,12 @@ if (!nombre) {
   localStorage.setItem("nombreUsuario", nombre);
 }
 
-console.log(nombre);
+var nombreUsuarioDiv = document.getElementById("nombreUsuario");
+nombreUsuarioDiv.innerHTML = "Bienvenido " + nombre + "!";
 
 const formulario = document.getElementById("formulario");
 const cotizador = document.getElementById("cotizador");
+const resultadosContainer = document.getElementById("resultados");
 
 formulario.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -32,6 +34,7 @@ function convertir() {
   let resultado = 0;
   let monedaNombre = "";
   let monedaValor = 0;
+  let monedaSeleccionada = "";
 
   const monedas = [
     { nombre: "dólar", valor: 393 },
@@ -41,18 +44,55 @@ function convertir() {
   if (document.getElementById("uno").checked) {
     monedaNombre = monedas[0].nombre;
     monedaValor = monedas[0].valor;
+    monedaSeleccionada = "dolares";
     resultado = valore / monedas[0].valor;
     localStorage.setItem("dolaresConvertidos", resultado.toFixed(2));
+
+    const nuevaTarjeta = document.createElement("div");
+    nuevaTarjeta.className = "tarjeta";
+
+    const nombreMoneda = document.createElement("h2");
+    nombreMoneda.textContent = monedaNombre.toUpperCase();
+
+    const montoConvertido = document.createElement("p");
+    montoConvertido.textContent = `$${resultado.toFixed(2)}`;
+
+    nuevaTarjeta.appendChild(nombreMoneda);
+    nuevaTarjeta.appendChild(montoConvertido);
+
+    resultadosContainer.appendChild(nuevaTarjeta);
+  
   } else if (document.getElementById("dos").checked) {
     monedaNombre = monedas[1].nombre;
     monedaValor = monedas[1].valor;
+    monedaSeleccionada = "euros";
     resultado = valore / monedas[1].valor;
     localStorage.setItem("eurosConvertidos", resultado.toFixed(2));
+
+    const nuevaTarjeta = document.createElement("div");
+    nuevaTarjeta.className = "tarjeta";
+
+    const nombreMoneda = document.createElement("h2");
+    nombreMoneda.textContent = monedaNombre.toUpperCase();
+
+    const montoConvertido = document.createElement("p");
+    montoConvertido.textContent = `$${resultado.toFixed(2)}`;
+
+    nuevaTarjeta.appendChild(nombreMoneda);
+    nuevaTarjeta.appendChild(montoConvertido);
+
+    resultadosContainer.appendChild(nuevaTarjeta);
   } else {
-    alert("Tenés que seleccionar una moneda");
+    const mensajeError = document.createElement("p");
+    mensajeError.textContent = "Tenés que seleccionar una moneda";
+    resultadosContainer.appendChild(mensajeError);
   }
 
-  if (monedaNombre && monedaValor) {
-    alert(`El cambio de pesos a ${monedaNombre} es: ${monedaValor} ${monedaNombre.toUpperCase()} = $${resultado.toFixed(2)}`);
+  if (monedaNombre && monedaValor && monedaSeleccionada) {
+    const mensaje = document.createElement("p");
+    mensaje.textContent = `El cambio de pesos a ${monedaNombre} es: $${resultado.toFixed(2)}`;
+    resultadosContainer.appendChild(mensaje);
+
+    localStorage.setItem("monedaSeleccionada", monedaSeleccionada);
   }
 }
