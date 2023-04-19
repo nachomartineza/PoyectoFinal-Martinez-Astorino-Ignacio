@@ -46,7 +46,7 @@ function convertir() {
   let resultado = 0;
   let monedaSeleccionada = "";
   if (!document.getElementById("uno").checked && !document.getElementById("dos").checked) {
-    swal("Error", "Debes seleccionar al menos una moneda", "error");
+    swal("Error", "Debes seleccionar una moneda", "error");
     return;
   }
 
