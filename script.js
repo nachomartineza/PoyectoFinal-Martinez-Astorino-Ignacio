@@ -82,7 +82,7 @@ function convertir() {
 
       swal({
         title: "¡Conversión exitosa!",
-        text: `El cambio de pesos a ${monedaNombre} es: $USD${resultado.toFixed(2)}`,
+        text: `El cambio de pesos a ${monedaNombre} es: $USD ${resultado.toFixed(2)}`,
         icon: "success",
       });
     })
