@@ -114,7 +114,7 @@ function convertir() {
       resultadosContainer.appendChild(nuevaTarjeta);
 
       const mensaje = document.createElement("p");
-      mensaje.textContent = `El cambio de pesos a ${monedaNombre} es: $${resultado.toFixed(2)}`;
+      mensaje.textContent = `El cambio de pesos a ${monedaNombre} es: €${resultado.toFixed(2)}`;
       resultadosContainer.appendChild(mensaje);
 
       localStorage.setItem("monedaSeleccionada", monedaSeleccionada);
